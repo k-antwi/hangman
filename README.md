@@ -15,6 +15,7 @@ This is where the installation instructions will be placed.
 - hangman
   - milestone_2.py
   - milestone_3.py
+  - milestone_4.py
 
 ## License information
 
