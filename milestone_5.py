@@ -5,14 +5,16 @@ from numbers import Number
 class Hangman:
     def __init__(self, word_list, num_lives = 5):
         self.word_list = word_list
-        self.word = random.choice(self.word_list)
-        self.word_guessed = ['_' for l in self.word]
+        self.word = None
+        self.word_guessed = None
         self.num_letters = 0
         self.num_lives = num_lives
         self.list_of_guesses = []
 
     def check_guess(self, guess):
         guess = guess.lower()
+        self.word = random.choice(self.word_list)
+        self.word_guessed = ['_' for l in self.word]
         print(self.word)
         
         if guess in self.word:
@@ -42,10 +44,10 @@ class Hangman:
 word_list = ['apple', 'orange', 'mango', 'grapes', 'plums']
 
 def play_game(word_list):
-    num_lives = 5
+    num_lives = 0
     game = Hangman(word_list, num_lives)
     
-    while True:
+    while game.num_lives > 0:
         if game.num_lives == 0:
             print("You lost!")
             break
@@ -53,6 +55,7 @@ def play_game(word_list):
             game.ask_for_input()
         if game.num_lives > 0 and game.num_letters <= 0:
             print('Congratulations. You won the game!')
+        # game.num_lives
 
 
 play_game(word_list)
